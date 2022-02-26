@@ -138,6 +138,7 @@ input {
   overflow: hidden;
   -webkit-transition: 0.2s 0.7s ease-in-out;
   transition: 0.2s 0.7s ease-in-out;
+  position: relative;
 }
 
 .container .req-pmo form .cust-row {
@@ -154,7 +155,7 @@ input {
 }
 
 .container .req-pmo form .input {
-  margin: 20px 0;
+  margin: 15px 0;
   width: 100%;
 }
 

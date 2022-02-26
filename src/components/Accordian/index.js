@@ -8,8 +8,15 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { makeStyles } from '@mui/styles';
 
-export default function MyAccordian({ toggleDrawer }) {
+// const useStyles = makeStyles((theme) => ({
+//     drawer: {
+//         width: width
+//     }
+// }))
+
+export default function MyAccordian({ width }) {
     const [expanded, setExpanded] = useState(false);
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -17,7 +24,7 @@ export default function MyAccordian({ toggleDrawer }) {
     };
 
     return (
-        <div>
+        <div style={{width: {width}}}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -27,7 +34,6 @@ export default function MyAccordian({ toggleDrawer }) {
                     <Typography sx={{ width: '33%', flexShrink: 0 }}>
                         Status
                     </Typography>
-
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormGroup>

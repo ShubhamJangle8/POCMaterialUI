@@ -13,11 +13,19 @@ import Avatar from '@mui/material/Avatar';
 import DemandTrackerLogo from '../../img/demandlogo.ico'
 import { useState } from "react";
 import { deepOrange, deepPurple } from '@mui/material/colors';
+import Leftbar from '../Leftbar'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         display: "flex",
         justifyContent: "space-between",
+    },
+    menuFilter: {
+        display: "flex",
+        justifyContent: "space-between",
+        [theme.breakpoints.down("sm")]: {
+            width: '50%',
+        },
     },
     logo: {
         //   display: "none",
@@ -73,7 +81,10 @@ const Navbar = () => {
     return (
         <AppBar position="fixed">
             <Toolbar className={classes.toolbar}>
-                <img src={DemandTrackerLogo} alt="image" className={classes.logo} />
+                <div className={classes.menuFilter}>
+                    <img src={DemandTrackerLogo} alt="image" className={classes.logo} />
+                </div>
+
 
                 <div className={classes.icons}>
                     <Badge badgeContent={4} color="secondary" className={classes.badge}>

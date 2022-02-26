@@ -10,6 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import Paper from '@mui/material/Paper';
 import { makeStyles } from "@material-ui/core";
 import { purple } from '@mui/material/colors';
 import MyAccordian from '../Accordian'
@@ -36,11 +37,17 @@ const useStyles = makeStyles((theme) => ({
     },
     cancel: {
         cursor: 'pointer',
-        width: '100%',
+        width: '20%',
         display: 'flex',
         justifyContent: 'center',
         marginBottom: theme.spacing(5),
-        marginTop: theme.spacing(5)
+        marginTop: theme.spacing(5),
+        marginLeft: theme.spacing(28),
+        backgroundColor: 'red'
+    },
+    open: {
+        marginBottom: theme.spacing(3),
+        width: '15rem'
     }
 }));
 
@@ -60,7 +67,7 @@ export default function Leftbar() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: 255 }}
+            sx={{ width: 300 }}
             role="presentation"
             // onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
@@ -75,9 +82,9 @@ export default function Leftbar() {
                     </ListItem>
                 ))}
             </List> */}
-            <div className={classes.cancel}>
+            <Paper className={classes.cancel} elevation={0}>
                 <CancelOutlinedIcon fontSize='large' color='primary' onClick={toggleDrawer(anchor, false)} />
-            </div>
+            </Paper>
             <MyAccordian />
             <Divider />
             <div className={classes.buttons}>
@@ -93,7 +100,7 @@ export default function Leftbar() {
             {
                 ['left'].map((anchor) => (
                     <React.Fragment key={anchor}>
-                        <Button variant='contained' onClick={toggleDrawer(anchor, true)} ><OpenInFullIcon /></Button>
+                        <Button variant='contained' onClick={toggleDrawer(anchor, true)} className={classes.open}>Filter</Button>
                         <Drawer
                             anchor={anchor}
                             open={state[anchor]}

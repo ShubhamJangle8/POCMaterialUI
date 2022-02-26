@@ -196,7 +196,7 @@ function LoginBefore() {
               <input type="password" placeholder="Password" name="password" value={rform.password} onChange={handleRChange} required />
             </div> */}
                         <TextField id="outlined-password-input" className='input' label="Password" type="password"
-                            autoComplete="current-password" variant="outlined" margin="dense" name="password" onChange={handleRChange} value={rform.password}/>
+                            autoComplete="current-password" variant="outlined" margin="dense" name="password" onChange={handleRChange} value={rform.password} />
                         <div className='cust-row'>
                             {
                                 rerr.password ?
