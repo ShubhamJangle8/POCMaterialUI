@@ -1,0 +1,13 @@
+.right-box {
+    .data{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .data-heading {
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 1px solid black;
+            width: 100%;
+        }
+    }
+}

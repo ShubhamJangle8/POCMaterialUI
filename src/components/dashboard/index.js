@@ -16,22 +16,18 @@ import {
   Paper,
   TextField
 } from "@material-ui/core";
-import { Cancel, Mail, Notifications, Search } from "@material-ui/icons";
+import { Notifications } from "@material-ui/icons";
+import SearchBar from "material-ui-search-bar";
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Avatar from '@mui/material/Avatar';
 import Add from '../Add'
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import DemandTrackerLogo from '../../img/demandlogo.ico'
 import { useState } from "react";
 import { deepOrange, indigo, lime } from '@mui/material/colors';
 import Mytable from '../Table'
-import MyAccordian from '../Accordian'
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -39,7 +35,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 const drawerWidth = 250
 
@@ -193,7 +188,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '2rem',
     marginBottom: '1rem',
     [theme.breakpoints.down("sm")]: {
-      marginRight: '0px',
+      marginRight: '5rem',
+      marginLeft: '5rem',
       display: 'block'
     },
   }
@@ -201,6 +197,251 @@ const useStyles = makeStyles((theme) => ({
 
 
 }));
+
+let records = [
+  {
+    "id": 1,
+    "technology": "Python & Django",
+    "grade": "C1",
+    "lastmodifieddate": "18-08-2021",
+    "status": "Open",
+    "cluster": "DSI"
+  },
+  {
+    "id": 2,
+    "technology": "Java & Spring",
+    "grade": "A5",
+    "lastmodifieddate": "19-08-2021",
+    "status": "Closed",
+    "cluster": "R&S"
+  },
+  {
+    "id": 3,
+    "technology": "Angular",
+    "grade": "B1",
+    "lastmodifieddate": "10-08-2021",
+    "status": "On Hold",
+    "cluster": "R&E"
+  },
+  {
+    "id": 4,
+    "technology": "Python",
+    "grade": "A4",
+    "lastmodifieddate": "02-08-2021",
+    "status": "In progress",
+    "cluster": "Multi-Channel"
+  },
+  {
+    "id": 5,
+    "technology": "Java & Spring  boot",
+    "grade": "A4",
+    "lastmodifieddate": "01-08-2021",
+    "status": "Cancelled",
+    "cluster": "R&S"
+  },
+  {
+    "id": 6,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 7,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 8,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 9,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 10,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 11,
+    "technology": "Python & Django",
+    "grade": "C1",
+    "lastmodifieddate": "18-08-2021",
+    "status": "Open",
+    "cluster": "DSI"
+  },
+  {
+    "id": 12,
+    "technology": "Java & Spring",
+    "grade": "A5",
+    "lastmodifieddate": "19-08-2021",
+    "status": "Closed",
+    "cluster": "R&S"
+  },
+  {
+    "id": 13,
+    "technology": "Angular",
+    "grade": "B1",
+    "lastmodifieddate": "10-08-2021",
+    "status": "On Hold",
+    "cluster": "R&E"
+  },
+  {
+    "id": 14,
+    "technology": "Python",
+    "grade": "A4",
+    "lastmodifieddate": "02-08-2021",
+    "status": "In progress",
+    "cluster": "Multi-Channel"
+  },
+  {
+    "id": 15,
+    "technology": "Java & Spring  boot",
+    "grade": "A4",
+    "lastmodifieddate": "01-08-2021",
+    "status": "Cancelled",
+    "cluster": "R&S"
+  },
+  {
+    "id": 16,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 17,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 18,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 19,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 20,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 21,
+    "technology": "Python & Django",
+    "grade": "C1",
+    "lastmodifieddate": "18-08-2021",
+    "status": "Open",
+    "cluster": "DSI"
+  },
+  {
+    "id": 22,
+    "technology": "Java & Spring",
+    "grade": "A5",
+    "lastmodifieddate": "19-08-2021",
+    "status": "Closed",
+    "cluster": "R&S"
+  },
+  {
+    "id": 23,
+    "technology": "Angular",
+    "grade": "B1",
+    "lastmodifieddate": "10-08-2021",
+    "status": "On Hold",
+    "cluster": "R&E"
+  },
+  {
+    "id": 24,
+    "technology": "Python",
+    "grade": "A4",
+    "lastmodifieddate": "02-08-2021",
+    "status": "In progress",
+    "cluster": "Multi-Channel"
+  },
+  {
+    "id": 25,
+    "technology": "Java & Spring  boot",
+    "grade": "A4",
+    "lastmodifieddate": "01-08-2021",
+    "status": "Cancelled",
+    "cluster": "R&S"
+  },
+  {
+    "id": 26,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 27,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 28,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 29,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+  {
+    "id": 30,
+    "technology": "Manual Testing",
+    "grade": "B2",
+    "lastmodifieddate": "30-08-2021",
+    "status": "Withdrawn",
+    "cluster": "R&E"
+  },
+]
+
+
 
 const theme = createTheme({
   palette: {
@@ -222,18 +463,33 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const classes = useStyles({ open });
   const [expanded, setExpanded] = useState(false);
+  const [search, setSearch] = useState('');
+  const [data, setData] = useState(records)
 
+  const handleSearch = (value) => {
+    setSearch(value);
+    if (value === "") {
+      setData(records)
+    }
+    else {
+      setData(records.filter(item =>
+        item.technology.toLowerCase().includes(search.toLowerCase())
+      ))
+    }
+    console.log(data);
+  };
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
   const drawerItems = (
     <>
       <Toolbar />
       <Divider />
       <List className={classes.list}>
         {/* <ListItem style={{ width: "15rem" }}> */}
-        <Paper elevation={4} component={Box}>
+        <Paper elevation={5} component={Box}>
           <Accordion expanded={expanded === 'panel1'} elevation={0} sx={{ border: '0' }} onChange={handleChange('panel1')} className={classes.accordion}>
             <AccordionSummary elevation={0}
               expandIcon={<ExpandMoreIcon style={{ color: "black" }} />}
@@ -261,7 +517,7 @@ const Dashboard = () => {
 
         {/* </ListItem> */}
         {/* <ListItem style={{ width: "15rem" }}> */}
-        <Paper elevation={4} component={Box}>
+        <Paper elevation={1} component={Box}>
 
           <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className={classes.accordion}>
             <AccordionSummary
@@ -283,7 +539,7 @@ const Dashboard = () => {
             </AccordionDetails>
           </Accordion>
         </Paper>
-        <Paper elevation={4} component={Box}>
+        <Paper elevation={1} component={Box}>
 
           <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} className={classes.accordion}>
             <AccordionSummary
@@ -307,7 +563,7 @@ const Dashboard = () => {
             </AccordionDetails>
           </Accordion>
         </Paper>
-        <Paper elevation={4} component={Box}>
+        <Paper elevation={1} component={Box}>
 
           <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} className={classes.accordion}>
             <AccordionSummary
@@ -395,19 +651,18 @@ const Dashboard = () => {
         <Toolbar />
         <Toolbar />
         <Box className={classes.search}>
-          <InputLabel htmlFor="input-with-icon-adornment">
-            Search Entries
-          </InputLabel>
-          <Input
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <SearchSharpIcon />
-              </InputAdornment>
-            }
+          <SearchBar
+            value={search}
+            onChange={value => {
+              handleSearch(value);
+            }}
+            onRequestSearch={() => console.log("onRequestSearch")}
+            style={{
+              maxWidth: 800
+            }}
           />
         </Box>
-        <Mytable />
+        <Mytable records={data} />
       </div>
       <Add />
     </ThemeProvider>

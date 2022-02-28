@@ -11,7 +11,7 @@ import CapgeminiLogo from '../../img/capgemini.png'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import './app.css'
+import './index.css'
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 // import { useFormik } from 'formik';

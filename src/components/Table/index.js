@@ -71,138 +71,11 @@ const columns = [
     }
 ];
 
-// function createData(id, technology, grade, date, status, cluster, edit, more) {
-//     // const density = population / size;
-//     return { id, technology, grade, date, status, cluster, edit, more };
-// }
 
-// const rows = [
-//     createData(1, 'Python', 'C1', '12/02/2021', 'Open', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(2, 'Java', 'A5', '12/02/2021', 'Closed', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(3, 'Spring Boot', 'B1', '12/02/2021', 'On Hold', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(4, 'Angular', 'B2', '12/02/2021', 'In Progress', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(5, 'React', 'A4', '12/02/2021', 'Cancelled', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(6, 'Manual testing', 'B2', '12/02/2021', 'Withdrawn', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(7, 'Python', 'C2', '12/02/2021', 'Open', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(8, 'Java', 'A4', '12/02/2021', 'Withdrawn', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(9, 'Spring Boot', 'A4', '12/02/2021', 'Closed', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(10, 'Angular', 'B2', '12/02/2021', 'On Hold', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(11, 'React', 'C1', '12/02/2021', 'Withdrawn', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-//     createData(12, 'Manual testing', 'C2', '12/02/2021', 'Closed', 'CSI', <EditIcon style={{ cursor: 'pointer' }} />, <MoreVertIcon style={{ cursor: 'pointer' }} />),
-
-// ];
-const records = [
-    {
-        "id": 1,
-        "technology": "Python & Django",
-        "grade": "C1",
-        "lastmodifieddate": "18-08-2021",
-        "status": "Open",
-        "cluster": "DSI"
-    },
-    {
-        "id": 2,
-        "technology": "Java & Spring",
-        "grade": "A5",
-        "lastmodifieddate": "19-08-2021",
-        "status": "Closed",
-        "cluster": "R&S"
-    },
-    {
-        "id": 3,
-        "technology": "Angular",
-        "grade": "B1",
-        "lastmodifieddate": "10-08-2021",
-        "status": "On Hold",
-        "cluster": "R&E"
-    },
-    {
-        "id": 4,
-        "technology": "Python",
-        "grade": "A4",
-        "lastmodifieddate": "02-08-2021",
-        "status": "In progress",
-        "cluster": "Multi-Channel"
-    },
-    {
-        "id": 5,
-        "technology": "Java & Spring  boot",
-        "grade": "A4",
-        "lastmodifieddate": "01-08-2021",
-        "status": "Cancelled",
-        "cluster": "R&S"
-    },
-    {
-        "id": 6,
-        "technology": "Manual Testing",
-        "grade": "B2",
-        "lastmodifieddate": "30-08-2021",
-        "status": "Withdrawn",
-        "cluster": "R&E"
-    },
-    {
-        "id": 7,
-        "technology": "Manual Testing",
-        "grade": "B2",
-        "lastmodifieddate": "30-08-2021",
-        "status": "Withdrawn",
-        "cluster": "R&E"
-    },
-    {
-        "id": 8,
-        "technology": "Manual Testing",
-        "grade": "B2",
-        "lastmodifieddate": "30-08-2021",
-        "status": "Withdrawn",
-        "cluster": "R&E"
-    },
-    {
-        "id": 9,
-        "technology": "Manual Testing",
-        "grade": "B2",
-        "lastmodifieddate": "30-08-2021",
-        "status": "Withdrawn",
-        "cluster": "R&E"
-    },
-    {
-        "id": 10,
-        "technology": "Manual Testing",
-        "grade": "B2",
-        "lastmodifieddate": "30-08-2021",
-        "status": "Withdrawn",
-        "cluster": "R&E"
-    },
-]
-
-// const columns = [
-//     {
-//         title: 'Id', field: 'id',
-//     },
-//     {
-//         title: 'Technology', field: 'technology',
-//     },
-//     {
-//         title: 'Grade', field: 'grade',
-//     },
-//     {
-//         title: 'Last Modified Date', field: 'lastmodifieddate',
-//     },
-//     {
-//         title: 'Status', field: 'status',
-//     },
-//     {
-//         title: 'Cluster', field: 'cluster',
-//     },
-// ]
-
-const requests = []
-
-
-export default function Mytable() {
+export default function Mytable({ records }) {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(6);
-    const [requests, setRequests] = useState(records)
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -212,10 +85,6 @@ export default function Mytable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-
-    // useEffect(async () => {
-    //     let requests = await axios.get("url")
-    // }, [])
 
     return (
         <ThemeProvider theme={theme}>
@@ -237,7 +106,7 @@ export default function Mytable() {
                                 </TableRow>
                             </TableHead>
                             <TableBody className={classes.tableBody}>
-                                {requests
+                                {records
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map((row) => {
                                         return (
@@ -269,18 +138,17 @@ export default function Mytable() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    {/* <Divider style={{ marginTop: '2rem' }} /> */}
+                    <Divider />
 
                     <TablePagination
                         rowsPerPageOptions={[6, 12, 24, 100]}
                         component="div"
-                        count={requests.length}
+                        count={records.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onPageChange={handleChangePage}
                         onRowsPerPageChange={handleChangeRowsPerPage}
                         style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', margin: 'auto' }}
-
                     />
 
                     {/* <MaterialTable data={data}

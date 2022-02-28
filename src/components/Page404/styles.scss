@@ -1,0 +1,25 @@
+.error-container {
+    // background-color: blue
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+    .button {
+        background-color: rgb(80, 80, 231);
+        color: white;
+        margin-top: 1rem;
+        &:hover{
+            background-color: rgb(99, 99, 231);
+        }
+    }
+}
+
+@media screen and (max-width: 854px) {
+    .error-container {
+        margin: auto;
+        .error-image {
+            display: none;
+        }
+    }
+}

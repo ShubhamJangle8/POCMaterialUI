@@ -5,6 +5,8 @@ import Dashboard from './components/dashboard'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import Leftbar from './components/Leftbar'
+import ErrorPage from './components/Page404';
+import Charts from './components/Charts'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 function App() {
@@ -13,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" ><Login /></Route>
-          <Route path="/reqlist" ><Dashboard /></Route>
+          <Route path="/reqlist" ><Charts /></Route>
         </Switch>
       </BrowserRouter>
       {/* <Login /> */}

@@ -1,0 +1,36 @@
+.error-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100vh;
+}
+
+.error-container .button {
+  background-color: #5050e7;
+  color: white;
+  margin-top: 1rem;
+}
+
+.error-container .button:hover {
+  background-color: #6363e7;
+}
+
+@media screen and (max-width: 854px) {
+  .error-container {
+    margin: auto;
+  }
+  .error-container .error-image {
+    display: none;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
